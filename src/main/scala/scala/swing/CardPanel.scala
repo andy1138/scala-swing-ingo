@@ -21,8 +21,8 @@ import javax.swing.JPanel
 class CardPanel(hgap: Int, vgap: Int) extends Panel with SequentialContainer.Wrapper {
   def this() = this(0, 0)
 
-  peer.setLayout(new java.awt.CardLayout(vgap, hgap))
-  private def cardLayout = peer.getLayout.asInstanceOf[java.awt.CardLayout]
+  private def cardLayout = new java.awt.CardLayout(vgap, hgap)
+  peer.setLayout( cardLayout )
 
   /** add card to panel. */
   def +=(c: scala.swing.Component, name: String) { peer.add(c.peer, name) }

@@ -64,6 +64,11 @@ object CardPanelDemo extends SimpleSwingApplication {
       contents += new TextField("TextField", 20)
     }
 
+//    val card = new CardPanel() {
+//      contents += (buttons, BUTTONPANEL)
+//      contents += (text, TEXTPANEL)
+//    }
+    
     val card = new CardPanel()
     card += (buttons, BUTTONPANEL)
     card += (text, TEXTPANEL)
