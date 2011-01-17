@@ -10,8 +10,8 @@ package scala.swing
 package test
 
 import event._
-
 import BorderPanel._
+import java.awt.Dimension
 
 /**
  * CardPanel Demo
@@ -20,8 +20,16 @@ import BorderPanel._
  * @author andy hicks
  */
 object CardPanelDemo extends SimpleSwingApplication {
+  
   def top = new MainFrame {
+    title = "CardPanel Demo"
+    size = new Dimension(400, 400)
+    
+    contents = ui
+  }
 
+  def ui = new BorderPanel {
+  
     val BUTTONPANEL = "Card with JButtons"
     val TEXTPANEL = "Card with JTextField"
 
@@ -73,13 +81,8 @@ object CardPanelDemo extends SimpleSwingApplication {
     card += (buttons, BUTTONPANEL)
     card += (text, TEXTPANEL)
 
-    title = "CardPanel Demo"
-    contents = new BorderPanel {
-      layout(cmd) = Position.North
-      layout(card) = Position.Center
-    }
-
-    size = new Dimension(600, 100)
+    layout( cmd ) =  Position.North
+    layout( card) = Position.Center
   }
 
 }

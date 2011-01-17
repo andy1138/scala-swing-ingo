@@ -124,7 +124,9 @@ object Swing {
       
   def TitledBorder(border: Border, title: String) = 
     BorderFactory.createTitledBorder(border, title) 
-  
+
+  def TitledBorder(title: String) = BorderFactory.createTitledBorder(title) 
+    
   /**
    * Schedule the given code to be executed on the Swing event dispatching 
    * thread (EDT). Returns immediately.

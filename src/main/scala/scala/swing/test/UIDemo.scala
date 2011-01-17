@@ -101,6 +101,8 @@ object UIDemo extends SimpleSwingApplication {
         pages += new Page("Password", password)
         pages += new Page("Painting", LinePainting.ui)
         //pages += new Page("Text Editor", TextEditor.ui)
+        pages += new Page("CardPanel", CardPanelDemo.ui)
+        pages += new Page("ColorChooser", ColorChooserDemo.ui)
       }
             
       val list = new ListView(tabs.pages) {
