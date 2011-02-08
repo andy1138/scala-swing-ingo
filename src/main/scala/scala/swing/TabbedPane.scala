@@ -111,7 +111,12 @@ class TabbedPane extends Component with Publisher {
    * Possible values are Left, Right, Top, Bottom.
    */
   def tabPlacement(b: Alignment.Value) { peer.setTabPlacement(b.id) }
-  
+
+  def titleAt(idx:Int, title:String) { peer.setTitleAt(idx, title)}
+  def toolTipTextAt(idx:Int, text:String) {peer.setToolTipTextAt(idx, text)}
+  def selectedIndex(idx:Int) {peer.setSelectedIndex(idx)}
+
+
   /**
    * The current page selection
    */

@@ -25,7 +25,8 @@ class Label(text0: String, icon0: Icon, align: Alignment.Value) extends Componen
   def this() = this("", EmptyIcon, Alignment.Center)
   def this(s: String) = this(s, EmptyIcon, Alignment.Center)
   def this(s: String, a:Alignment.Value) = this(s, EmptyIcon, a)
-  
+  def this(icon1: Icon) = this("", icon1, Alignment.Center)
+
   def text: String = peer.getText
   def text_=(s: String) = peer.setText(s)
   def icon: Icon = peer.getIcon

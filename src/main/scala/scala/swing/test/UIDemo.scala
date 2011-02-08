@@ -114,7 +114,7 @@ object UIDemo extends SimpleSwingApplication {
         oneTouchExpandable = true
         continuousLayout = true
       }      
-      layout(center) = Center 
+      layout(center) = BorderPanel.Position.Center
       
       /*
        * This slider is used above, so we need lazy initialization semantics.
@@ -127,7 +127,7 @@ object UIDemo extends SimpleSwingApplication {
         max = tabs.pages.size-1
         majorTickSpacing = 1
       }
-      layout(slider) = South
+      layout(slider) = BorderPanel.Position.South
 
       /*
        * Establish connection between the tab pane, slider, and list view.

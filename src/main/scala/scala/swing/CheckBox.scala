@@ -17,9 +17,12 @@ import javax.swing._
  * 
  * @see javax.swing.JCheckBox
  */
-class CheckBox(text: String) extends ToggleButton {
-  override lazy val peer: JCheckBox = new JCheckBox(text) with SuperMixin
-  def this() = this("")
+class CheckBox(text: String, icon0:Icon, selected:Boolean) extends ToggleButton {
+  override lazy val peer: JCheckBox = new JCheckBox(text, toNullIcon(icon0), selected) with SuperMixin
+  def this() = this("", EmptyIcon, false)
+  def this(text:String) = this(text, EmptyIcon, false)
+  def this(text:String, icon:Icon) = this(text, icon, false)
+  def this(icon:Icon) = this("", icon, false)
 
   def borderPaintedFlat: Boolean = peer.isBorderPaintedFlat
   def borderPaintedFlat_=(flat: Boolean) { peer.setBorderPaintedFlat(flat) }

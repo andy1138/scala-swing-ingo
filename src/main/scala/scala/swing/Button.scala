@@ -22,9 +22,11 @@ object Button {
  *
  * @see javax.swing.JButton
  */
-class Button(text0: String) extends AbstractButton with Publisher {
-  override lazy val peer: JButton = new JButton(text0) with SuperMixin
-  def this() = this("")
+class Button(text0: String, icon0:Icon) extends AbstractButton with Publisher {
+  override lazy val peer: JButton = new JButton(text0, toNullIcon(icon0)) with SuperMixin
+  def this() = this("", EmptyIcon)
+  def this(s:String) = this(s, EmptyIcon)
+  def this(i:Icon) = this("", i)
   def this(a: Action) = {
     this("")
     action = a

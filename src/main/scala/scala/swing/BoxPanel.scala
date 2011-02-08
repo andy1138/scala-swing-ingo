@@ -10,6 +10,7 @@
 
 package scala.swing
 
+
 /**
  * A panel that lays out its contents one after the other, 
  * either horizontally or vertically.
@@ -23,4 +24,10 @@ class BoxPanel(orientation: Orientation.Value) extends Panel with SequentialCont
     p.setLayout(l)
     p
   }
+
+  def alignmentX = peer.getAlignmentX
+  def alignmentX_=(a:Alignment.Value) peer.setAlignmentX(a.id)
+
+  def alignmentY = peer.getAlignmentY
+  def alignmentY_=(a:Alignment.Value) peer.setAlignmentX(a.id)
 }

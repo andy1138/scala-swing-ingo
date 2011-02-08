@@ -13,6 +13,10 @@ import event._
 import BorderPanel._
 import java.awt.Dimension
 
+//import scala.swing.CardPanel.Card
+
+import scala.swing.CardPanel._
+
 /**
  * CardPanel Demo
  * Based on http://download.oracle.com/javase/tutorial/uiswing/layout/card.html
@@ -72,14 +76,10 @@ object CardPanelDemo extends SimpleSwingApplication {
       contents += new TextField("TextField", 20)
     }
 
-//    val card = new CardPanel() {
-//      contents += (buttons, BUTTONPANEL)
-//      contents += (text, TEXTPANEL)
-//    }
-    
-    val card = new CardPanel()
-    card += (buttons, BUTTONPANEL)
-    card += (text, TEXTPANEL)
+    val card = new CardPanel() {
+      card += new Card(buttons, BUTTONPANEL)
+      card += new Card(text, TEXTPANEL)
+    }
 
     layout( cmd ) =  Position.North
     layout( card) = Position.Center

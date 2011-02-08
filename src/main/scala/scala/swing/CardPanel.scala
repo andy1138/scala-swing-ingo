@@ -8,8 +8,17 @@
 
 package scala.swing
 
-import java.awt.CardLayout
-import javax.swing.JPanel
+import swing.CardPanel.Card
+
+//import java.awt.CardLayout
+//import javax.swing.JPanel
+
+object  CardPanel {
+  class Card protected[CardPanel](val comp: scala.swing.Component, val name: String)  extends Proxy {
+    def self = comp
+
+  }
+}
 
 /**
  * A panel that displays only one component at a time. 
@@ -18,14 +27,30 @@ import javax.swing.JPanel
  * @author andy hicks
  * @see java.awt.CardLayout
  */
-class CardPanel(hgap: Int, vgap: Int) extends Panel with SequentialContainer.Wrapper {
+class CardPanel(hgap: Int, vgap: Int) extends Panel with Publisher  {
   def this() = this(0, 0)
 
   peer.setLayout(new java.awt.CardLayout(vgap, hgap))
   private def cardLayout = peer.getLayout.asInstanceOf[java.awt.CardLayout]
 
-  /** add card to panel. */
-  def +=(c: scala.swing.Component, name: String) { peer.add(c.peer, name) }
+
+
+
+  object card extends BufferWrapper[Card] {
+//    def +=(t: Page): this.type = { t.parent = TabbedPane.this; peer.addTab(t.title, null, t.content.peer, t.tip); this }
+    /** add card to panel. */
+    def +=(card:Card):this.type = { peer.add(card.comp.peer, card.name);this }
+
+    protected def insertAt(n: Int, c: Card) {
+      peer.add(c.comp.peer, n.toString)
+    }
+
+    override def remove(n: Int): Card = { val t = peer.getComponent(n);peer.remove(n);t.asInstanceOf[Card]}
+    def length = peer.getComponentCount
+    def apply(n: Int) = new Card(UIElement.cachedWrapper[Component](peer.getComponent(n).asInstanceOf[javax.swing.JComponent]), "")
+
+  }
+
 
   /** Show the first item. */
   def first { cardLayout.first(peer) }

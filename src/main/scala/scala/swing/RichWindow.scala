@@ -47,7 +47,8 @@ sealed trait RichWindow extends Window {
   
   def title: String = peer.getTitle
   def title_=(s: String) = peer.setTitle(s)
-  
+
+
   /**
    * The menu bar of this frame or `NoMenuBar` if no menu bar is set.
    */
@@ -91,7 +92,8 @@ class Frame extends RichWindow {
   def maximize() { peer.setExtendedState(peer.getExtendedState | AWTFrame.MAXIMIZED_BOTH) }
   def unmaximize() { peer.setExtendedState(peer.getExtendedState & ~AWTFrame.MAXIMIZED_BOTH) }
   def maximized() { (peer.getExtendedState & AWTFrame.MAXIMIZED_BOTH) != 0 }
-  
+
+
   def iconImage: Image = peer.getIconImage
   def iconImage_=(i: Image) { peer.setIconImage(i) }
 }

@@ -113,12 +113,17 @@ trait UIElement extends Proxy with LazyPublisher {
   def visible_=(b: Boolean) { peer.setVisible(b) }
   def showing: Boolean = peer.isShowing
   def displayable: Boolean = peer.isDisplayable
-  
+
+  def graphicsConfiguration = peer.getGraphicsConfiguration
+
   def repaint() { peer.repaint }
   def repaint(rect: Rectangle) { peer.repaint(rect.x, rect.y, rect.width, rect.height) }
   def ignoreRepaint: Boolean = peer.getIgnoreRepaint
   def ignoreRepaint_=(b: Boolean) { peer.setIgnoreRepaint(b) }
-  
+
+  def invalidate() { peer.invalidate }
+  def validate() { peer.validate }
+
   protected def onFirstSubscribe {
     peer.addComponentListener(new java.awt.event.ComponentListener {
       def componentHidden(e: java.awt.event.ComponentEvent) { 
