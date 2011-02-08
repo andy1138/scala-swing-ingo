@@ -10,8 +10,6 @@ package scala.swing
 
 import swing.CardPanel.Card
 
-//import java.awt.CardLayout
-//import javax.swing.JPanel
 
 object  CardPanel {
   class Card protected[CardPanel](val comp: scala.swing.Component, val name: String)  extends Proxy {
@@ -37,7 +35,6 @@ class CardPanel(hgap: Int, vgap: Int) extends Panel with Publisher  {
 
 
   object card extends BufferWrapper[Card] {
-//    def +=(t: Page): this.type = { t.parent = TabbedPane.this; peer.addTab(t.title, null, t.content.peer, t.tip); this }
     /** add card to panel. */
     def +=(card:Card):this.type = { peer.add(card.comp.peer, card.name);this }
 
